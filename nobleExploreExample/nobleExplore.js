@@ -53,7 +53,7 @@ function explorePeripheral(error) {
   discoverServicesAndCharacteristics();
   
   //console log signal strengh every second
-  setInterval(updateRSSI, 60);
+  //setInterval(updateRSSI, 60);
 
   //when disconnected, run this function
   myPeripheral.on('disconnect', disconnectPeripheral);
@@ -82,7 +82,16 @@ function discoverServices(error, services){
        //if you know a specific characteristic UUID, you can pass it as first parameter
        //of the discoverCharacteristics function (between []).
        for(var i = 0; i < services.length; i++){
-              services[i].discoverCharacteristics([], discoverCharacteristic);
+
+          var service = services[i];
+          var serviceInfo = service.uuid;
+
+          if (service.name) {
+            serviceInfo += ' (' + service.name + ')';
+          }
+          console.log(serviceInfo);
+
+          service.discoverCharacteristics([], discoverCharacteristic);
         }
 }
 
@@ -91,9 +100,19 @@ function discoverCharacteristic(error, characteristics){
 
        //now read each characteristic 
         for(var i = 0; i < characteristics.length; i++){   
-              characteristics[i].read(function(error, data){
-                    console.log(data); 
-              });
+             
+            var characteristic = characteristics[i];
+            var characteristicInfo = '  ' + characteristic.uuid;
+
+            if (characteristic.name) {
+              characteristicInfo += ' (' + characteristic.name + ')';
+            }
+
+            //console.log(characteristicInfo);
+
+            characteristic.read(function(error, data){
+                  console.log(characteristicInfo+", data: "+ data); 
+            });
        }
 }
 
