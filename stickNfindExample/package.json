@@ -1,0 +1,28 @@
+{
+  "name": "sticknfind",
+  "version": "0.0.0",
+  "description": "node.js lib for the StickNFind",
+  "main": "index.js",
+  "scripts": {
+    "test": "jshint *.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sandeepmistry/node-sticknfind.git"
+  },
+  "keywords": [
+    "StickNFind"
+  ],
+  "author": "Sandeep Mistry",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sandeepmistry/node-sticknfind/issues"
+  },
+  "dependencies": {
+    "noble": "~0.2.1"
+  },
+  "devDependencies": {
+    "jshint": "~2.1.11",
+    "async": "~0.2.9"
+  }
+}
