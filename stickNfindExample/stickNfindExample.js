@@ -1,20 +1,48 @@
-var StickNFind = require('./index');
-
-
-
-StickNFind.discover(function(sticknfind){
+/*
+  Noble stickNfind scan example
   
-  sticknfind.connect(function(){
-		console.log("connected");
+  This example uses Sandeep Mistry's noble library for node.js to
+  create a central server that finds stickNfind peripherals.
+  
+  created 26 Jan 2015
+  by Maria Paula Saba
+*/
 
-		sticknfind.discoverServicesAndCharacteristics(function(){
-			console.log("hi");
-		});
+var noble = require('noble');   //noble library
 
-  });
+// here we start scanning. we check if Bluetooth is on
+noble.on('stateChange', scan);
 
-  sticknfind.once('disconnect', function() {
-    process.exit(0);
-  });  
+function scan(state){
+  if (state === 'poweredOn') {
+    noble.startScanning();
+    console.log("Started scanning");   
+  } else {
+    noble.stopScanning();
+    console.log("Is Bluetooth on?");
+  }
+}
 
-});
+
+// for every peripheral we discover, run this callback function
+noble.on('discover', foundStickNfind);
+
+function foundStickNfind(peripheral) {
+  
+    if(peripheral.advertisement.localName === "StickNfind"){
+       console.log('\n\t found StickNfind UUID:' + peripheral.uuid);   
+  
+	  if(peripheral.rssi) {
+		console.log('\t RSSI: ' + peripheral.rssi); //RSSI is the signal strength
+	  }
+	  if(peripheral.state){
+	   console.log('\t state: ' + peripheral.state);    
+	  }
+    }
+	else{
+       //console.log('\n\t found another device with UUID:' + peripheral.uuid);   
+
+
+	}
+
+};

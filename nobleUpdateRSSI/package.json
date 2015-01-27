@@ -1,7 +1,7 @@
 {
-  "name": "stickNfind",
+  "name": "nobleUpdateRSSI",
   "version": "0.0.1",
-  "description" : "uses Sandeep Mistry's noble example to scan stickNfind devices",
+  "description" : "uses Sandeep Mistry's noble example to read RSSI from BLE peripheral devices",
   "dependencies": {
     "noble": "*"
   },

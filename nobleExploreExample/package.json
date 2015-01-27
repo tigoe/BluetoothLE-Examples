@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description" : "uses Sandeep Mistry's noble example to explore BLE peripheral devices",
   "dependencies": {
-    "noble": "*"
+    "noble": "*",
+	"async": "~0.2.9"
   },
   "engines": {
     "node": "0.10.x",

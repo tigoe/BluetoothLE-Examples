@@ -5,7 +5,7 @@
   This example uses Sandeep Mistry's noble library for node.js to
   create a central server that reads BLE peripherals advertisements. 
   
-  created 21 Jan 2014
+  created 21 Jan 2015
   by Maria Paula Saba
 */
 
