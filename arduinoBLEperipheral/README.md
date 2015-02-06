@@ -22,7 +22,9 @@ Note that you need to have at least OSX 10.9 and for OSX 10.10 (Yosemite), you n
 
 Download the [RFduino Add-on for Arduino] (http://www.rfduino.com/download-rfduino-library/) and follow instructions in [this PDF](http://www.rfduino.com/wp-content/uploads/2014/04/RFduino.Quick_.Start_.Guide_.pdf) to install it. 
 
+Attention! For both RFduino and RedBearLab boards, you need to have at least Arduino version 1.5.7 (it won’t work with previous versions, but it works with 1.5.8)
 
-#### You need to have at least Arduino version 1.5.7 (it won’t work with previous versions, but it works with 1.5.8).
+
+
 
 
