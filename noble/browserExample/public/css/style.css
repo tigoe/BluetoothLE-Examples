@@ -1,0 +1,61 @@
+body{
+	margin: 0px;
+	margin-top:20px;
+	font-family: "Arial", Sans-serif;
+
+}
+
+#container{
+	margin:auto;
+	width:80%;
+}
+
+#scan{
+	margin-bottom:20px;
+	width: 240px;
+	height: 60px;
+	border-radius: 10px;
+	background-color: #ffedb4;
+	font-size:18px;
+}
+
+.btn, .btn:focus{
+	outline: none;
+	cursor: pointer;
+}
+
+
+
+
+/*--------------------------------------------Peripherals List -----------------------------------------*/
+#found{
+	font-size: 20px;
+	margin: 0px;
+	margin-top: 50px;
+}
+
+.peripheralDiv{
+	float: left;
+	margin: 10px 10px;
+	width: 300px;
+	border: 1px #999 solid;
+	border-radius: 10px;
+	padding:5px;
+	
+}
+
+.peripheralDiv p{
+	margin:0px;
+	margin-left: 10px;
+	padding:10px;
+	font-weight: bold;
+	font-size: 21px;
+
+}
+
+.peripheralDiv span{
+	font-weight: normal;
+	font-size: 12px;
+	padding-top: 10px;
+
+}

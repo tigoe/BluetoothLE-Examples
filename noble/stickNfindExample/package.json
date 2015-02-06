@@ -1,0 +1,12 @@
+{
+  "name": "stickNfind",
+  "version": "0.0.1",
+  "description" : "uses Sandeep Mistry's noble example to scan stickNfind devices",
+  "dependencies": {
+    "noble": "*"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.3.x"
+  }
+}

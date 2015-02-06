@@ -1,0 +1,20 @@
+{
+  "name": "BLE_examples",
+  "description": "-",
+  "version": "0.0.1",
+  "dependencies": {
+    "noble": "*",
+    "index": "*",
+    "async": "*",
+	  "socket.io": "*",
+    "open": "*",
+    "express": "*",
+    "debug": "*"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "optionalDependencies": {}
+}
+
+
