@@ -35,12 +35,12 @@ SensorTag.discover(function(tag) {
 		console.log('disconnected!');
 		process.exit(0);
 	});
-
-   function connectMe() {			// attempt to connect to the tag
+		
+	function connectMe() {			// attempt to connect to the tag
      console.log('connect');
      tag.connect(discoverMe);		// when you connect, call discoverMe
    }
-   
+
    function discoverMe() {			// attempt to discover services
      console.log('discoverServicesAndCharacteristics');
      // when you discover services, enable the accelerometer:
