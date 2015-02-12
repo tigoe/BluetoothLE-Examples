@@ -21,6 +21,12 @@
 //define sensor pin
 #define SENSOR_PIN 5
 
+//variable for a timer
+long previousMillis = 0;
+
+ // interval at which we change (send) data (milliseconds)
+long interval = 100;          
+
 // create peripheral instance, see pinouts above
 BLEPeripheral           blePeripheral        = BLEPeripheral(BLE_REQ, BLE_RDY, BLE_RST);
 
@@ -64,12 +70,21 @@ void setup() {
 void loop() {
   // poll peripheral - this function will start the peripheral and handle the callbacks
   blePeripheral.poll();
+
+  //timer function
+  unsigned long currentMillis = millis();
+ if(currentMillis - previousMillis > interval) {
+   // save the last time 
+    previousMillis = currentMillis;   
   
-  int analogValue = analogRead(SENSOR_PIN); // read the analog input
-  sensorCharacteristic.setValue(analogValue);
+    // read the analog input
+   int analogValue = analogRead(SENSOR_PIN); 
+   //save it in the characteristic
+    sensorCharacteristic.setValue(analogValue);
   
-  Serial.println(analogValue);
-  delay(10);
+   Serial.println(analogValue);
+ 
+ }
   
 }
 
