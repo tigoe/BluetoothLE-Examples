@@ -29,20 +29,20 @@ Attention! For both RFduino and RedBearLab boards, you need to have at least Ard
 
 ## Examples
 
-### LED callback
+#### LED callback
 
 This example allows one to light up a LED from a BLE central by writing a value to a characteristic. The callback example uses functions that are called every time an event occur (e.g. every time a central connects, it runs the function blePeripheralConnectHandler)
 
-### LED switch 
+#### LED switch 
 
 This example allows one to light up a LED from a BLE central or physical button by writing a value to a characteristic. It uses a boolean function that checks if the characteristic was written (characteristic.written()). It is also possible to read the button value.
 
 
-### Servo motor
+#### Servo motor
 
 This example allows one to control a servo motor from a BLE central by writing a value to a characteristic.
 
 
-### Sensor 
+#### Sensor 
 
 This example stores sensor data (analog readings) into a characteristic, which can be read by a BLE central. It can also subscribe for notifications (it will get data every time a characteristic is set). A timer is needed because otherwise data transfer is too fast and it freezes the sketch.
