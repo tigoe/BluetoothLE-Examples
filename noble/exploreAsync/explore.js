@@ -17,7 +17,7 @@ var noble = require('noble');   //noble library
     async = require('async');   //async library
 
 var myPeripheral;
-var peripheralUUID = "add_your_peripheral_UUID_here";
+var peripheralUUID = "726c753237974031ad9c3eae0e068749"; //"add_your_peripheral_UUID_here";
 
 // here we start scanning. we check if Bluetooth is on
 noble.on('stateChange', scan);
