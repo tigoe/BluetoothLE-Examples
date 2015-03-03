@@ -40,7 +40,7 @@ float threshold = 0.05;     // voltage threshold for updating the characteristic
 
 void setup() {
   Serial.begin(9600);
-  blePeripheral.setLocalName("rbnano"); // optional but helpful
+  blePeripheral.setLocalName("BLEArduino"); // optional but helpful
   blePeripheral.setAdvertisedServiceUuid(service.uuid()); // optional but helpful
 
   // add attributes (services, characteristics, descriptors) to peripheral
