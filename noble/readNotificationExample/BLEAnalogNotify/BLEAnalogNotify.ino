@@ -60,6 +60,7 @@ void loop() {
   int sensorValue = 0;
   if (central) {      // if a central device connects to this peripheral
     while (central.connected()) {          // as long as the connection lasts
+      // for RFDuino, change parameter to GPIO pin number (1-6)
       int sensorValue = analogRead(A4);    // read an analog input
       // convert to a voltage:
       float voltage = sensorValue * (3.0 / 1024.0);
