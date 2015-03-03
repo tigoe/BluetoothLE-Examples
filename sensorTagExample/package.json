@@ -1,0 +1,14 @@
+{
+  "name": "sensorTagExample",
+  "version": "1.0.0",
+  "description": "TI Sensor Tag Example",
+  "main": "sensortagAccelerometer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tom Igoe",
+  "license": "ISC",
+  "dependencies": {
+    "sensortag": "^0.1.11"
+  }
+}
