@@ -3,3 +3,4 @@ sensorTagSlideshow/node_modules/*
 noble/browserExample/node_modules/*
 noble/exploreExample/node_modules/*
 noble/scanExample/node_modules/*
+noble/readNotificationExample/node_modules/*
