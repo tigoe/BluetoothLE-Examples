@@ -2,6 +2,7 @@
   "name": "SensorTagSlideController",
   "version": "0.0.1",
   "description" : "uses Sandeep Mistry's sensotTag library to explore TI sensorTag",
+  "main": "sensortagController.js",
   "dependencies": {
     "sensorTag": "*",
     "applescript": "*"
