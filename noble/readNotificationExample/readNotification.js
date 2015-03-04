@@ -47,6 +47,9 @@ function findMe (peripheral) {
     // whenever you discover a new service, run exploreMe:
     peripheral.on('servicesDiscover', exploreMe);
   }
+
+  // when a peripheral disconnects, run disconnectMe:
+  peripheral.on('disconnect', disconnectMe);
 }
 
 // the service exploration function:
@@ -79,6 +82,12 @@ function listenToMe (data, notification) {
     var value = data.readFloatLE(0);  // read the incoming buffer as a float
     console.log('value: ' + value);   // print it
   }
+}
+
+function disconnectMe() {
+  console.log('peripheral disconnected');
+  // exit the script:
+  process.exit(0);
 }
 
 /* ----------------------------------------------------
