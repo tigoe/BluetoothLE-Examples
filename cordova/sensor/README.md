@@ -16,13 +16,15 @@ Add the Bluetooth Low Energy Plugin
 
 Add the iOS platform
 
-   cordova platform add ios
+    cordova platform add ios
 
 Open the project in Xcode
 
-   open platforms/ios/Sensor.xcodeproj
+    open platforms/ios/Sensor.xcodeproj
 
-Deploy to an iOS device
+Deploy to an iOS device using Xcode.
+
+Edit the HTML and JavaScript in www/. Run `cordova prepare` to copy changes into the Xcode project.
 
 ## Android
 
