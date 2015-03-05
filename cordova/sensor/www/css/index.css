@@ -45,7 +45,7 @@ h1 {
 }
 
 #deviceList li{
-    
+
     margin-bottom: 20px;
 }
 
@@ -53,9 +53,9 @@ h1 {
     display: block;
     width:70%;
     height:30px;
-    
+
     margin: auto;
-    margin-top: 20px;
+    margin-top: 60px;
     margin-bottom: 20px;
     background-color: #000;
     color: #FFF;
@@ -63,7 +63,7 @@ h1 {
 
 #resultDiv{
     margin-bottom: 50px;
-    width:70%;    
+    width:70%;
     margin: auto;
 
 }

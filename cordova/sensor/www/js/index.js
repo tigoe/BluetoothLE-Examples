@@ -6,7 +6,7 @@
 
 */
 /* global startPage, deviceList, refreshButton */
-/* global connectedPage, resultDiv, messageInput, sendButton, disconnectButton */
+/* global connectedPage, sensorValue, disconnectButton */
 /* global ble  */
 /* jshint browser: true , devel: true*/
 'use strict';
@@ -61,7 +61,7 @@ var app = {
                 //saves device ID to disconnect button - needed later for disconnect function
                 disconnectButton.dataset.deviceId = deviceId;
 
-                resultDiv.innerHTML = "Waiting for data";
+                sensorValue.innerHTML = "Waiting for data";
 
                 //show next page
                 app.showConnectPage();
@@ -76,7 +76,7 @@ var app = {
         // Create typed array from the ArrayBuffer
         var data = new Uint8Array(buffer);
         // get the integer value and set into the UI
-        resultDiv.innerHTML = data[0];
+        sensorValue.innerHTML = data[0];
     },
 
     disconnect: function(event) {
@@ -99,3 +99,5 @@ var app = {
         alert("ERROR: " + reason); // real apps should use notification.alert
     }
 };
+
+app.initialize();

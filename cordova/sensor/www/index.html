@@ -11,23 +11,17 @@
     <body>
         <div class="app">
             <div id="startPage">
-                <h1>BLE Scanning</h1>
-                <button id="refreshButton">Refresh</button>
+                <h1>BLE Sensor</h1>
                 <ul id="deviceList">
                 </ul>
+                <button id="refreshButton">Refresh</button>
             </div>
             <div id="connectedPage">
-                <div id="resultDiv"></div>
-                <div>
-
-                </div>
+                <h1 id="sensorValue"></h1>
                 <button id="disconnectButton">Disconnect</button>
             </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
     </body>
 </html>
