@@ -11,8 +11,9 @@
   Arduino BLEAnalogNotify example in this repository
 
   created 2 Mar 2015
-  modified 3 Mar 2015
+  modified 5 Mar 2015
   by Tom Igoe
+  with much advice from Sandeep Mistry and Don Coleman
 */
 
 var noble = require('noble');   //noble library
