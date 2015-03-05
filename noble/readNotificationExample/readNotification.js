@@ -42,8 +42,8 @@ function findMe (peripheral) {
   function connectMe() {
     noble.stopScanning();
     console.log('Checking for services on ' + peripheral.advertisement.localName);
-    peripheral.discoverServices();    // start discovering services
-
+    // start discovering services:
+    peripheral.discoverSomeServicesAndCharacteristics(['fff0'],['fff1']);
     // whenever you discover a new service, run exploreMe:
     peripheral.on('servicesDiscover', exploreMe);
   }
