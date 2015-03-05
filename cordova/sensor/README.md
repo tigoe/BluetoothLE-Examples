@@ -1,6 +1,8 @@
-# LightBlue Bean Example
+# Sensor Example
 
-This example discovers and connects to [LightBlue bean](https://punchthrough.com/bean/) using Apache Cordova
+This example discovers and connects to BLE Sensor Service using Apache Cordova.
+
+Run the [Sensor Example](https://github.com/tigoe/BluetoothLE-Examples/blob/master/arduinoBLEperipheral/sensorExample/sensorExample.ino) on an RFduino, BLE Nano or compatible hardware.
 
 These instructions assume that [Apache Cordova](http://cordova.io) is installed and configured on your system.
 
@@ -18,7 +20,7 @@ Add the iOS platform
 
 Open the project in Xcode
 
-   open platforms/ios/Bean.xcodeproj
+   open platforms/ios/Sensor.xcodeproj
 
 Deploy to an iOS device
 
