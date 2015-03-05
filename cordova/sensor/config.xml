@@ -4,9 +4,11 @@
     <description>
         Read sensor values over Bluetooth Low Energy.
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author href="http://github.com/don">
+        Don Coleman
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <preference name="Orientation" value="portrait" />
+    <preference name="DisallowOverscroll" value="true"/>
 </widget>
