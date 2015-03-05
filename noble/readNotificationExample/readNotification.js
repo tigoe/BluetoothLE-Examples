@@ -43,29 +43,16 @@ function findMe (peripheral) {
     noble.stopScanning();
     console.log('Checking for services on ' + peripheral.advertisement.localName);
     // start discovering services:
-    peripheral.discoverSomeServicesAndCharacteristics(['fff0'],['fff1']);
-    // whenever you discover a new service, run exploreMe:
-    peripheral.on('servicesDiscover', exploreMe);
+    peripheral.discoverSomeServicesAndCharacteristics(['fff0'],['fff1'], exploreMe);
   }
 
   // when a peripheral disconnects, run disconnectMe:
   peripheral.on('disconnect', disconnectMe);
 }
 
-// the service exploration function:
-function exploreMe(services) {
+// the service/characteristic exploration function:
+function exploreMe(error, services, characteristics) {
   console.log('services: ' + services);
-  for (s in services) {
-    services[s].discoverCharacteristics();    // start discovering characteristics
-
-    // whenever a characteristic discover event happens, get the result.
-    // this handles repeated notifications:   
-    services[s].on('characteristicsDiscover', readMe);
-  }
-}
-
-// the characteristic notification function:
-function readMe(characteristics) {
   console.log('characteristics: ' + characteristics);
 
   for (c in characteristics) {
