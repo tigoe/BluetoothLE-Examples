@@ -13,6 +13,15 @@ Then install BLE-central plugin following instructions [here:](https://github.co
 
 #### Bean
 
-This example finds, connects and reads data from the Bean. (TBD: clean the data received)
+This example finds, connects and reads data from the Bean using Apache Cordova. 
 
+
+#### Sensor
+
+This example discovers and connects to BLE Sensor Service using Apache Cordova.
+
+
+#### Volume
+
+This example discovers and connects to BLE Volume Service using Apache Cordova.
 
