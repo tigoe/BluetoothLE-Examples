@@ -1,10 +1,5 @@
 # BLE Central for Cordova Examples
 
-These examples use [Sandeep Mistry's Arduino BLE Peripheral library](https://github.com/sandeepmistry/arduino-BLEPeripheral) to create peripheral with custom services and characteristics. 
-
-These examples can be used with nRF8001 and nRF51822 chips - see Sandeep’s repo for list of compatible hardware.
-
-
 
 ## Getting started with Phonegap/Cordova
 
