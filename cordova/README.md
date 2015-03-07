@@ -1,10 +1,5 @@
 # BLE Central for Cordova Examples
 
-These examples use [Sandeep Mistry's Arduino BLE Peripheral library](https://github.com/sandeepmistry/arduino-BLEPeripheral) to create peripheral with custom services and characteristics. 
-
-These examples can be used with nRF8001 and nRF51822 chips - see Sandeep’s repo for list of compatible hardware.
-
-
 
 ## Getting started with Phonegap/Cordova
 
@@ -18,6 +13,15 @@ Then install BLE-central plugin following instructions [here:](https://github.co
 
 #### Bean
 
-This example finds, connects and reads data from the Bean. (TBD: clean the data received)
+This example finds, connects and reads data from the Bean using Apache Cordova. 
 
+
+#### Sensor
+
+This example discovers and connects to BLE Sensor Service using Apache Cordova.
+
+
+#### Volume
+
+This example discovers and connects to BLE Volume Service using Apache Cordova.
 
