@@ -10,11 +10,14 @@
     "darwin",
     "linux"
   ],
-  "author": {
-    "name": "Don Coleman"
-  },
+  "author": "Don Coleman",
   "dependencies": {
     "bleno": "~0.1.10",
     "keypress": "0.2.1"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC"
 }
