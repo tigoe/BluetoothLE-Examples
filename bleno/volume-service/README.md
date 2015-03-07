@@ -22,3 +22,7 @@ iOS
 
   * [LightBlue - Bluetooth Low Energy](https://itunes.apple.com/us/app/lightblue-bluetooth-low-energy/id557428110?mt=8)
   * [BLExplr](https://itunes.apple.com/us/app/blexplr/id524018027?mt=8)
+
+Cordova
+
+  * [Volume Example](https://github.com/tigoe/BluetoothLE-Examples/tree/master/cordova/volume)

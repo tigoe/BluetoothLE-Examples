@@ -2,7 +2,7 @@
 
 This example discovers and connects to BLE Volume Service using Apache Cordova.
 
-Run the [Volume Service](https://github.com/tigoe/BluetoothLE-Examples/blob/master/bleno/VolumeService) on a Mac or Linux machine.
+Run the [Volume Service](https://github.com/tigoe/BluetoothLE-Examples/tree/master/bleno/volume-service) on a Mac or Linux machine.
 
 These instructions assume that [Apache Cordova](http://cordova.io) is installed and configured on your system.
 
