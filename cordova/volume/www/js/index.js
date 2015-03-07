@@ -90,13 +90,16 @@ var app = {
     changeVolume: function(level) { // send data over bluetooth
         function success() {
             console.log("Volume changed");
+            if (cordova.platformId === 'android') {
+                volumeLevel.innerHTML = level;
+            }
         }
         function failure(reason) {
             console.log("Error changing volume " + reason);
         }
         var data = new Uint8Array(1);
         data[0] = level;
-        ble.write(app.deviceId, volume.service, volume.level, data.buffer, success, failure);
+        ble.writeWithoutResponse(app.deviceId, volume.service, volume.level, data.buffer, success, failure);
     },
     disconnect: function(event) {
         ble.disconnect(app.deviceId, app.showMainPage, app.onError);
