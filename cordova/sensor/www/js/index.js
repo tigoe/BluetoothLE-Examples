@@ -37,18 +37,20 @@ var app = {
 
     refreshDeviceList: function() {
         deviceList.innerHTML = ''; // empties the list
-        // scan for BLE devices that advertise the Sensor service
-        ble.scan([sensor.service], 5, app.onDiscoverDevice, app.onError);
+        // scan for all devices
+        ble.scan([], 5, app.onDiscoverDevice, app.onError);
     },
 
     onDiscoverDevice: function(device) {
-        //creates a HTML element to display in the app
-        var listItem = document.createElement('li'),
-            html = '<b>' + device.name + '</b><br/>' + 'RSSI: ' + device.rssi + '&nbsp;|&nbsp;' + device.id;
-        listItem.innerHTML = html;
-        listItem.dataset.deviceId = device.id; //save the device ID in the DOM element
-        listItem.setAttribute("class", "result"); //give the element a class for css purposes
-        deviceList.appendChild(listItem); //attach it in the HTML element called deviceList
+        if (device.name === 'SensorTag') {
+            //creates a HTML element to display in the app
+            var listItem = document.createElement('li'),
+                html = '<b>' + device.name + '</b><br/>' + 'RSSI: ' + device.rssi + '&nbsp;|&nbsp;' + device.id;
+            listItem.innerHTML = html;
+            listItem.dataset.deviceId = device.id; //save the device ID in the DOM element
+            listItem.setAttribute("class", "result"); //give the element a class for css purposes
+            deviceList.appendChild(listItem); //attach it in the HTML element called deviceList
+        }
     },
 
     connect: function(e) {
