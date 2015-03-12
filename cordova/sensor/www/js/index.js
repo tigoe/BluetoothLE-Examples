@@ -37,7 +37,7 @@ var app = {
 
     refreshDeviceList: function() {
         deviceList.innerHTML = ''; // empties the list
-        // scan for BLE devices that advertise the Sensor service
+        // scan for devices with the sensor service
         ble.scan([sensor.service], 5, app.onDiscoverDevice, app.onError);
     },
 
