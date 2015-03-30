@@ -18,11 +18,8 @@ void loop() {
   bool connected = Bean.getConnectionState();
 
   if(connected) {
-
-    // Write current temperature to a scratch data area.  
-    uint8_t temperatureBuffer[1];
     
-    // Update LEDs 
+    // Update LED
     ScratchData receivedData = Bean.readScratchData(ledScratch); 
 
     uint8_t redLed = receivedData.data[0];
