@@ -67,13 +67,11 @@ connect: function(e) {
     var deviceId = e.target.dataset.deviceId,
 
     onConnect = function() {
-        // subscribe for incoming data
 		
-		randomButton.dataset.deviceId = deviceId;
-
-        //saves device ID to disconnect button - needed later for disconnect function
+        //saves device ID to buttons - needed later 
         disconnectButton.dataset.deviceId = deviceId;
-        
+        randomButton.dataset.deviceId = deviceId;
+       
         resultDiv.innerHTML = "Click to send data";
 
         //show next page
@@ -86,7 +84,6 @@ connect: function(e) {
 sendData: function(data) { // data received from Bean
     var deviceId = event.target.dataset.deviceId;
 	
-	var data = [];
 	var r = Math.random()*255;
 	var g = Math.random()*255;
 	var b = Math.random()*255;	
