@@ -33,7 +33,7 @@ bindEvents: function() {
     document.addEventListener('deviceready', this.onDeviceReady, false); //runs onDeviceReady function whenever the device is ready (loaded)
     refreshButton.addEventListener('touchstart', this.refreshDeviceList, false); //on touch of the Refresh button, runs refreshDeviceList function
     deviceList.addEventListener('touchstart', this.connect, false); //on touch of device list, connect to device
-	randomButton.addEventListener('touchstart', this.sendData, false);
+    randomButton.addEventListener('touchstart', this.sendData, false);
     disconnectButton.addEventListener('touchstart', this.disconnect, false);
 },
     
@@ -68,7 +68,6 @@ connect: function(e) {
 
     onConnect = function() {
         // subscribe for incoming data
-        //ble.startNotification(deviceId, beanServiceUUID, beanCharacteristicUUID, app.onData, app.onError);
 		
 		randomButton.dataset.deviceId = deviceId;
 
@@ -83,15 +82,6 @@ connect: function(e) {
     
      //connect functions asks for the device id, a callback function for when succeeds and one error functions for when it fails
      ble.connect(deviceId, onConnect, app.onError);
-},
-onData: function(data) { // data received from Bean
-    var receivedData = bytesToString(data);
-    
-    //to read accelerometer data
-    if(receivedData.indexOf("X:") > 0){
-        resultDiv.innerHTML = "Received: " + bytesToString(data) + "<br/>";
-        resultDiv.scrollTop = resultDiv.scrollHeight;
-    }
 },
 sendData: function(data) { // data received from Bean
     var deviceId = event.target.dataset.deviceId;
