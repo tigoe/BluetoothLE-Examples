@@ -1,14 +1,7 @@
 {
-  "name": "SensorTagSlideController",
-  "version": "0.0.1",
-  "description" : "uses Sandeep Mistry's sensotTag library to explore TI sensorTag",
+  "name": "sensorTagSlideshow",
+  "version": "1.0.0",
+  "description": "controls slideshows in OSX by calling applescripts when buttons on a sensorTag are pressed",
   "main": "sensortagController.js",
-  "dependencies": {
-    "sensorTag": "*",
-    "applescript": "*"
-  },
-  "engines": {
-    "node": "0.10.x",
-    "npm": "1.3.x"
-  }
+  "author": "Tom Igoe"
 }
