@@ -1,6 +1,6 @@
 # BLE Peripheral Examples
 
-These examples use [Sandeep Mistry's Arduino BLE Peripheral library](https://github.com/sandeepmistry/arduino-BLEPeripheral) to create peripheral with custom services and characteristics. 
+These examples use [Sandeep Mistry's Arduino BLE Peripheral library](https://github.com/sandeepmistry/arduino-BLEPeripheral) to create peripheral with custom services and characteristics.
 
 These examples can be used with nRF8001 and nRF51822 chips - see Sandeep’s repo for list of compatible hardware.
 
@@ -10,7 +10,7 @@ These examples can be used with nRF8001 and nRF51822 chips - see Sandeep’s rep
 
 ### [BLE Nano](http://redbearlab.com/blenano/) and [RedBearLab nRF51822](http://redbearlab.com/redbearlab-nrf51822)
 
-Follow instructions in [this tutorial](http://redbearlab.com/getting-started-nrf51822/) to install an Arduino Add-on.
+In order to program the BLE Nano with Arduino 1.6.0 or later, you'll need to install an add-on. The simplest way is to use Sandeep Mistry's [nrf51822 add-on](https://github.com/sandeepmistry/nRF51822-Arduino). Download from GitHub, and unzip it, and in the resulting directory, you'll find the following directory (among other things): /arduino-1.5.x/hardware/RBL/RBL_nRF51822. Copy this RBL_nRF51822 directory to the hardware subdirectory of your Arduino sketch directory, then re-start Arduino. You should see the BLE Nano and RedBear nRF51822 boards in the boards menu now. If that fails, follow the instructions in [this tutorial](http://redbearlab.com/getting-started-nrf51822/) to install an Arduino Add-on.
 
 Then install the bootloader in your hardware:
 
@@ -20,7 +20,7 @@ Note that you need to have at least OSX 10.9 and for OSX 10.10 (Yosemite) and yo
 
 ### [Rfduino] (http://www.rfduino.com/)
 
-Download the [RFduino Add-on for Arduino] (http://www.rfduino.com/download-rfduino-library/) and follow instructions in [this PDF](http://www.rfduino.com/wp-content/uploads/2014/04/RFduino.Quick_.Start_.Guide_.pdf) to install it. 
+Download the [RFduino Add-on for Arduino] (http://www.rfduino.com/download-rfduino-library/) and follow instructions in [this PDF](http://www.rfduino.com/wp-content/uploads/2014/04/RFduino.Quick_.Start_.Guide_.pdf) to install it.
 
 Attention! For both RFduino and RedBearLab boards, you need to have at least Arduino version 1.5.7 (it won’t work with previous versions, but it works with 1.5.8)
 
@@ -33,7 +33,7 @@ Attention! For both RFduino and RedBearLab boards, you need to have at least Ard
 
 This example allows one to light up a LED from a BLE central by writing a value to a characteristic. The callback example uses functions that are called every time an event occur (e.g. every time a central connects, it runs the function blePeripheralConnectHandler)
 
-#### LED switch 
+#### LED switch
 
 This example allows one to light up a LED from a BLE central or physical button by writing a value to a characteristic. It uses a boolean function that checks if the characteristic was written (characteristic.written()). It is also possible to read the button value.
 
@@ -43,6 +43,6 @@ This example allows one to light up a LED from a BLE central or physical button 
 This example allows one to control a servo motor from a BLE central by writing a value to a characteristic.
 
 
-#### Sensor 
+#### Sensor
 
 This example stores sensor data (analog readings) into a characteristic, which can be read by a BLE central. It can also subscribe for notifications (it will get data every time a characteristic is set). A timer is needed because otherwise data transfer is too fast and it freezes the sketch.
