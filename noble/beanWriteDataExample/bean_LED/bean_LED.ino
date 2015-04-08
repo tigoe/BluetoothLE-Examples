@@ -1,3 +1,13 @@
+/*
+  Bean write data example
+  
+  This example uses the first (of five available) Scratch characteristic to receive from a central (noble or cordova).
+  Read more about ScratchData: https://punchthrough.com/bean/the-arduino-reference/setscratchdata/
+  
+  created 30 Mar 2015
+  by Maria Paula Saba based on Evothings examples
+  
+*/
 
 String beanName = "MyBean";
 const uint8_t ledScratch = 1;
@@ -16,9 +26,7 @@ void setup() {
 void loop() {
 
   bool connected = Bean.getConnectionState();
-
   if(connected) {
-    
     // Update LED
     ScratchData receivedData = Bean.readScratchData(ledScratch); 
 
@@ -29,7 +37,6 @@ void loop() {
     Bean.setLed(redLed, greenLed, blueLed);
   }
   else {
-    
     // Turn LED off and put to sleep. 
     Bean.setLed(0, 0, 0);
     Bean.sleep(0xFFFFFFFF); 

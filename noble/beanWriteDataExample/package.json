@@ -1,0 +1,14 @@
+{
+  "name": "BLE_examples",
+  "description": "-",
+  "version": "0.0.1",
+  "dependencies": {
+    "ble-bean": "*"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "optionalDependencies": {}
+}
+
+
