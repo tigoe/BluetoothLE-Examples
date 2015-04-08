@@ -57,7 +57,7 @@ noble.on('stateChange', function(state) {
   }
 });
 
-
+//when discover new peripheral
 noble.on('discover', function(peripheral) {
 	var peripheralData = {
 		"name": peripheral.advertisement.localName,
@@ -83,7 +83,7 @@ noble.on('discover', function(peripheral) {
 	}
 });
 
-
+//this function is called in the sockets part
 function connectPeripheral(peripheral) {
 	noble.stopScanning();
 
