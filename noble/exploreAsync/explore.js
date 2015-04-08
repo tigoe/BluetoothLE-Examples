@@ -1,13 +1,13 @@
 
 /*
-  Noble explore example
+  Noble explore-async example
   
   This example uses Sandeep Mistry's noble library for node.js to
   create a central server that reads and connects to BLE peripherals 
   to read all services and characteristics available using async, a module 
   to manage asynchronous operations in Node.
   Learn more about async here: https://github.com/caolan/async 
-  and http://justinklemm.com/node-js-  async-tutorial/ and
+  and http://justinklemm.com/node-js-async-tutorial/
   
   created 26 Jan 2015
   by Maria Paula Saba
