@@ -5,17 +5,21 @@
 
 Follow instructions in [this page](http://phonegap.com/install/) to install Phonegap or [this](http://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html) for Cordova CLI. Then install BLE-central plugin following instructions [https://github.com/don/cordova-plugin-ble-central](https://github.com/don/cordova-plugin-ble-central).
 
-Once you create a project, copy the html/css/js files and build the project in the platform you want. 
+Once you create a project, copy the www files to the application main folder and build the project in the platform you want. 
 
 ## Examples
 
 #### Bean
 
-Bean write: This example finds, connects and writes data to the Bean. 
+Bean write: This example connects and writes data to the Bean. 
 
-Bean read: This example finds, connects and reads data from the Bean. 
+Bean read: Besides connecting and writing, this example reads data whenever requested. 
 
-In both examples, the arduino sketch to be uploaded to bean is in the respective folder.
+Bean notify: Besides connecting and writing, this example subscribes for data changes. 
+
+Bean serial: This example reads and displays the "fake Serial" characteristic from the Bean. //TBD: clean data
+
+In all Bean examples, the arduino sketch to be uploaded to bean is in the respective folder.
 
 
 #### Sensor

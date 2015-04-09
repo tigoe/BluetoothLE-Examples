@@ -4,7 +4,8 @@
   BLE Central 
   
   This example uses Don Coleman's BLE Central Plugin for Apache Cordova
-  to create a central server that connects and reads data from the Light Blue Bean. 
+  to create a central server that connects and reads data from the Light Blue Bean
+  serial characteristic. 
   
   created 25 Feb 2015
   by Maria Paula Saba
@@ -19,9 +20,9 @@
 /* jshint browser: true , devel: true*/
 'use strict';
 
-var DEVICE = 'Bean';
-var beanServiceUUID = 'A495FF10-C5B1-4B44-B512-1370F02D74DE';
-var beanCharacteristicUUID = 'A495FF11-C5B1-4B44-B512-1370F02D74DE';
+var DEVICE = 'MyBean';
+var serialServiceUUID = 'A495FF10-C5B1-4B44-B512-1370F02D74DE';
+var serialCharacteristicUUID = 'A495FF11-C5B1-4B44-B512-1370F02D74DE';
 
 
 var app = {
@@ -68,7 +69,7 @@ connect: function(e) {
 
     onConnect = function() {
         // subscribe for incoming data
-        ble.startNotification(deviceId, beanServiceUUID, beanCharacteristicUUID, app.onData, app.onError);
+        ble.startNotification(deviceId, serialServiceUUID, serialCharacteristicUUID, app.onData, app.onError);
         //saves device ID to disconnect button - needed later for disconnect function
         disconnectButton.dataset.deviceId = deviceId;
         
@@ -81,14 +82,13 @@ connect: function(e) {
      //connect functions asks for the device id, a callback function for when succeeds and one error functions for when it fails
      ble.connect(deviceId, onConnect, app.onError);
 },
-onData: function(data) { // data received from Bean
+onData: function(data) { 
+    // save data received from Bean, you might have to parse it
     var receivedData = bytesToString(data);
+
+    resultDiv.innerHTML = "Received: " + receivedData + "<br/>";
+    resultDiv.scrollTop = resultDiv.scrollHeight;
     
-    //to read accelerometer data
-    if(receivedData.indexOf("X:") > 0){
-        resultDiv.innerHTML = "Received: " + bytesToString(data) + "<br/>";
-        resultDiv.scrollTop = resultDiv.scrollHeight;
-    }
 },
 
 disconnect: function(event) {
@@ -114,6 +114,13 @@ onError: function(reason) {
 // ASCII only
 function bytesToString(buffer) {
     return String.fromCharCode.apply(null, new Uint8Array(buffer));
+}
+
+//ASCII only
+function bytesToInt(buffer){
+    var bufferArray = new Uint8Array(buffer);
+    
+    return bufferArray;
 }
 
 // ASCII only
