@@ -14,7 +14,7 @@ Once you create a project, copy the www files to the application main folder and
 - Bean write: This example connects and writes data to the Bean. 
 - Bean read: Besides connecting and writing, this example reads data whenever requested. 
 - Bean notify: Besides connecting and writing, this example subscribes for data changes in the "fake serial" characteristic. 
-- Bean serial: This example reads and displays the "fake Serial" characteristic from the Bean.
+- Bean serial: This example reads the "fake Serial" characteristic from the Bean by subscribing to it.
 
 In all Bean examples, the arduino sketch to be uploaded to bean is in the respective folder.
 
