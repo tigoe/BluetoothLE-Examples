@@ -1,0 +1,10 @@
+{
+  "name": "macAddressScan",
+  "version": "0.0.1",
+  "description": "test of noble peripheral.address function",
+  "main": "index.js",
+  "dependencies": {
+    "noble": "^0.3.12"
+  },
+  "author": "Tom Igoe"
+}
