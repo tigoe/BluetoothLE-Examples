@@ -68,18 +68,18 @@ var app = {
 		//get the device ID from the DOM element
         deviceId = e.target.dataset.deviceId,
 
-		onConnect = function() {
-            alert("connected");
-            
-			ble.startNotification(deviceId, serialServiceUUID, serialCharacteristicUUID, app.onData, app.onError);
-			//show next page
-			app.showConnectPage();
-		};
-
 		//connect functions asks for the device id, a callback function for when succeeds and one error functions for when it fails
-		ble.connect(deviceId, onConnect, app.onError);
+		ble.connect(deviceId, app.onConnect, app.onError);
 	},
-	
+    
+    onConnect: function() {
+        alert("connected");
+        
+        ble.startNotification(deviceId, serialServiceUUID, serialCharacteristicUUID, app.onData, app.onError);
+        //show next page
+        app.showConnectPage();
+    },
+
 	// write data to the bean
 	sendData: function() { 
 		var r = Math.random()*255;
