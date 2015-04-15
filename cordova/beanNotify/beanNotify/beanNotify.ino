@@ -31,6 +31,8 @@ void loop() {
     if(redLed != previousColor[0] && greenLed != previousColor[1] && blueLed != previousColor[2]){
          uint8_t newColor[] = {redLed, greenLed, blueLed};
          Serial.print(redLed);
+         Serial.print(greenLed);
+         Serial.print(blueLed);
          previousColor[0] = redLed;
          previousColor[1] = greenLed;
          previousColor[2] = blueLed;

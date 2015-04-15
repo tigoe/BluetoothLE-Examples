@@ -20,6 +20,7 @@
 
 var deviceId;
 var DEVICE = 'MyBean';
+var GATTserviceUUID = 'A495FF10-C5B1-4B44-B512-1370F02D74DE';
 var scratchServiceUUID = 'A495FF20-C5B1-4B44-B512-1370F02D74DE';
 var writeCharacteristicUUID = 'A495FF21-C5B1-4B44-B512-1370F02D74DE';
 var readCharacteristicUUID = 'A495FF22-C5B1-4B44-B512-1370F02D74DE';
@@ -45,12 +46,11 @@ var app = {
 
 	refreshDeviceList: function() {
 		deviceList.innerHTML = ''; // empties the list
-		ble.scan([], 5, app.onDiscoverDevice, app.onError); //scans for BLE devices
+		ble.scan([GATTserviceUUID], 5, app.onDiscoverDevice, app.onError); //scans for BLE devices
 	},
 
 	onDiscoverDevice: function(device) {
 		//only shows devices with the name we're looking for
-		if(device.name === DEVICE) {
 			//creates a HTML element to display in the app
 			var listItem = document.createElement('li'),
 			html = '<b>' + device.name + '</b><br/>' +
@@ -60,16 +60,15 @@ var app = {
 			listItem.dataset.deviceId = device.id;         //save the device ID in the DOM element
 			listItem.setAttribute("class", "result");      //give the element a class for css purposes
 			deviceList.appendChild(listItem);              //attach it in the HTML element called deviceList
-		}
+		
 
 	},
 
 	connect: function(e) {
 		//get the device ID from the DOM element
-        deviceId = e.target.dataset.deviceId,
+        deviceId = e.target.dataset.deviceId;
 
-		onConnect = function() {
-            alert("Connected");			
+		var onConnect = function() {
 			//show next page
 			app.showConnectPage();
 		};
@@ -101,8 +100,9 @@ var app = {
 	
 		var success = function(data){
 			//change to a unit8Array, length of 3.
-	 		var receivedData = bytesToString(data);
-			resultDiv.innerHTML = "Previous color:" + receivedData;	
+			var receivedData = new Uint8Array(data, 0, 3);			
+			resultDiv.innerHTML = "Previous color:" + receivedData[0] + "," + receivedData[1] + "," +
+				receivedData[2] + ".";	
 		}
 		
 		ble.read(deviceId, scratchServiceUUID, readCharacteristicUUID, success, app.onError);
