@@ -3,5 +3,9 @@
   "version": "1.0.0",
   "description": "controls slideshows in OSX by calling applescripts when buttons on a sensorTag are pressed",
   "main": "sensortagController.js",
-  "author": "Tom Igoe"
+  "author": "Tom Igoe",
+  "dependencies": {
+    "applescript": "^1.0.0",
+    "sensortag": "^1.0.0"
+  }
 }
