@@ -1,13 +1,13 @@
 
 /*
   Noble characteristic notifcation  example
-  
+
   This example uses Sandeep Mistry's noble library for node.js to
   subscribe to a characteristic that has its notify property set.
   The startScanning function call filters for the specific service
   you want, in order to ignore other devices and services.
 
-  For a peripheral example that works with this see the 
+  For a peripheral example that works with this see the
   Arduino BLEAnalogNotify example in this repository
 
   created 2 Mar 2015
@@ -23,7 +23,7 @@ var targetService = 'fff0';     // the service you want
 function scan(state){
   if (state === 'poweredOn') {    // if the radio's on, scan for this service
     noble.startScanning([targetService], false);
-    console.log("Started scanning");   
+    console.log("Started scanning");
   } else {                        // if the radio's off, let the user know:
     noble.stopScanning();
     console.log("Is Bluetooth on?");
@@ -67,7 +67,7 @@ function exploreMe(error, services, characteristics) {
 // the notification read function:
 function listenToMe (data, notification) {
   if (notification) {   // if you got a notification
-    var value = data.readFloatLE(0);  // read the incoming buffer as a float
+    var value = data.readIntLE(0);  // read the incoming buffer as a float
     console.log('value: ' + value);   // print it
   }
 }
@@ -84,5 +84,3 @@ function disconnectMe() {
 
 noble.on('stateChange', scan);  // when the BT radio turns on, start scanning
 noble.on('discover', findMe);   // when you discover a peripheral, run findMe()
-
-

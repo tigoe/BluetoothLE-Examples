@@ -1,10 +1,10 @@
 /*
-	sensorTag Keynote Slide Controller 
-	
+	sensorTag Keynote Slide Controller
+
 	This example uses Sandeep Mistry's sensortag library for node.js to
 	control AppleScrpt.
-	
-	Although the sensortag library functions are all asynchronous, 
+
+	Although the sensortag library functions are all asynchronous,
 	there is a sequence you need to follow in order to successfully
 	read a tag:
 		1) discover the tag
@@ -13,20 +13,20 @@
 		4) turn on the sensor you want to use (in this case, accelerometer)
 		5) turn on notifications for the sensor
 		6) listen for changes from the sensortag
-		
+
 	This example does all of those steps in sequence by having each function
 	call the next as a callback. Discover calls connect, which calls
 	discoverServicesAndCharacteristics, and so forth.
-	
+
 	This example is heavily indebted to Sandeep's test for the library, but
-	achieves more or less the same thing without using the async library. 
+	achieves more or less the same thing without using the async library.
 	It is also heavily indebted to Marco Stagni's notes on AppleScript and node.js
 	here: http://marcostagni.com/applescript-and-node-js/
-	
+
 	To run this, node sensortagController.js, then start a slideshow in Keynote
 	or PowerPoint. This script will send the right and left keystrokes when you press
 	the buttons on the sensorTag.
-	
+
 	created 27 Feb 2015
 	by Tom Igoe
 */
@@ -36,7 +36,7 @@ var SensorTag = require('sensortag');		// sensortag library
 var applescript = require('applescript');	// applescript library
 
 function runFile(filename) {
-	applescript.execFile( filename, function(err, data) {  
+	applescript.execFile( filename, function(err, data) {
 	    if (err, data) {
 	        //handle error event
 	    } else {
@@ -45,14 +45,14 @@ function runFile(filename) {
 	    }
 	});
 }
-// listen for tags: 
+// listen for tags:
 SensorTag.discover(function(tag) {
 	// when you disconnect from a tag, exit the program:
 	tag.on('disconnect', function() {
 		console.log('disconnected!');
 		process.exit(0);
 	});
-		
+
 	function connectMe() {			// attempt to connect to the tag
      console.log('connect');
      tag.connect(discoverMe);		// when you connect, call discoverMe
@@ -63,11 +63,11 @@ SensorTag.discover(function(tag) {
      // when you discover services, enable the accelerometer:
      tag.discoverServicesAndCharacteristics(notifyMe);
    }
-     	
+
 	function notifyMe() {
  		tag.notifySimpleKey(listenForButton);		// start the button listener
    }
-   
+
 	// when you get a button change, print it out:
 	function listenForButton() {
 		tag.on('simpleKeyChange', function(left, right) {
@@ -79,14 +79,14 @@ SensorTag.discover(function(tag) {
 			if (left) {
 				console.log('left: ' + left);
 				runFile('left.scpt');
-			}  else 
+			}  else
 			if (right) {		// if right, send the right key
 				console.log('right: ' + right);
 				runFile('right.scpt');
-			} 
+			}
 	   });
 	}
-	
+
 	// Now that you've defined all the functions, start the process:
 	connectMe();
 });
