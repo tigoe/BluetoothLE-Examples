@@ -9,6 +9,6 @@
   "author": "Tom Igoe",
   "license": "ISC",
   "dependencies": {
-    "sensortag": "^0.1.11"
+    "sensortag": "^1.0.0"
   }
 }

@@ -8,15 +8,13 @@
 	there is a sequence you need to follow in order to successfully
 	read a tag:
 		1) discover the tag
-		2) connect to the tag
-		3) read its services and characteristics
-		4) turn on the sensor you want to use (in this case, accelerometer)
-		5) turn on notifications for the sensor
-		6) listen for changes from the sensortag
+		2) connect to and set up the tag
+		3) turn on the sensor you want to use (in this case, IR temp)
+		4) turn on notifications for the sensor
+		5) listen for changes from the sensortag
 
 	This example does all of those steps in sequence by having each function
-	call the next as a callback. Discover calls connect, which calls
-	discoverServicesAndCharacteristics, and so forth.
+	call the next as a callback. Discover calls connectAndSetUp and so forth.
 
 	This example is heavily indebted to Sandeep's test for the library, but
 	achieves more or less the same thing without using the async library.
@@ -37,15 +35,9 @@ SensorTag.discover(function(tag) {
 		process.exit(0);
 	});
 
-	function connectMe() {			// attempt to connect to the tag
-     console.log('connect');
-     tag.connect(discoverMe);		// when you connect, call discoverMe
-   }
-
-   function discoverMe() {			// attempt to discover services
-     console.log('discoverServicesAndCharacteristics');
-     // when you discover services, enable the accelerometer:
-     tag.discoverServicesAndCharacteristics(enableIrTempMe);
+	function connectAndSetUpMe() {			// attempt to connect to the tag
+     console.log('connectAndSetUp');
+     tag.connectAndSetUp(enableIrTempMe);		// when you connect, call enableIrTempMe
    }
 
    function enableIrTempMe() {		// attempt to enable the IR Temperature sensor
@@ -84,5 +76,5 @@ SensorTag.discover(function(tag) {
 	}
 
 	// Now that you've defined all the functions, start the process:
-	connectMe();
+	connectAndSetUpMe();
 });
