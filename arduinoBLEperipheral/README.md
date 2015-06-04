@@ -20,7 +20,7 @@ Note that you need to have at least OSX 10.9 and for OSX 10.10 (Yosemite) and yo
 
 ### [Rfduino] (http://www.rfduino.com/)
 
-Follow instructions in [here](https://github.com/RFduino/RFduino/blob/master/README.md) to install it. You  need to install FTDI drivers for Windows only. 
+Follow instructions in [this link](https://github.com/RFduino/RFduino/blob/master/README.md) to install it. You need to install FTDI drivers for Windows only. This is for versions with Board Manager only
 
 - Open Arduino
 - Go to menu Edit > Preferences (or Arduino > Preferences), and add http://rfduino.com/package_rfduino_index.json to Additional Board Manager URLs and save.
@@ -28,7 +28,7 @@ Follow instructions in [here](https://github.com/RFduino/RFduino/blob/master/REA
 - Select the RFduino package at the end of the list, and click Install to install it.
 - Your new board will now show up in the Tools->Board menu. 
 
-Attention! For both RFduino and RedBearLab boards, you need to have at least Arduino version 1.5.7 (it won’t work with previous versions, but it works with 1.5.8)
+Attention! These instructions are for Arduino 1.6.3 or newer.
 
 
 
