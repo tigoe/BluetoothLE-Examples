@@ -73,7 +73,8 @@ var BleUart = function (uuid) {
 
           // whenever a notify event happens, get the result.
           // this handles repeated notifications:
-          receive.on('read', function(data, notification) {
+          receive.on('data', function(data, notification) {
+            console.log("notification");
             if (notification) {   // if you got a notification
               self.emit('data', String(data));  // emit a data event
             }
