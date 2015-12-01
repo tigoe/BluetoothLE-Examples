@@ -1,0 +1,22 @@
+{
+  "name": "ble-uart",
+  "version": "0.0.1",
+  "description": "a BLE UART module",
+  "main": "example.js",
+  "dependencies": {
+    "noble": "^1.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node example.js"
+  },
+  "keywords": [
+    "Bluetooth",
+    "LE",
+    "noble",
+    "UART",
+    "serial"
+  ],
+  "author": "Tom Igoe",
+  "license": "ISC"
+}
