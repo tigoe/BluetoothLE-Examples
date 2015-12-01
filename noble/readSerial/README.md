@@ -5,6 +5,10 @@ This example uses Sandeep Mistry's [noble library for node.js](https://github.co
 characteristic based on a proprietary UART service by Nordic Semiconductor.
 You can see this service implemented in [Adafruit's Adafruit_BluefruitLE_nRF51 library](https://github.com/adafruit/Adafruit_BluefruitLE_nRF51). This code works with Adafruit's [Bluefruit LE UART Friend](https://www.adafruit.com/products/2479), and should work with the [Feather 32u4 Bluefruit LE](https://www.adafruit.com/product/2829) as well.
 
+On OSX, the operating system will not recognize this service as a serial port. Hence the need for this example.
+
+*Note:* UART service is not a great use of Bluetooth LE. It invalidates the low energy aspect of Bluetooth LE. A better way to do things is to make your own custom services and characteristics, in my opinion.
+
 This is a very bare-bones implementation.
 
 TODO:
