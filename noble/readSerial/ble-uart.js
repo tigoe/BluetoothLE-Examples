@@ -17,23 +17,33 @@ var util = require('util');     // utilities library
 // make an instance of the eventEmitter library:
 var EventEmitter = require('events').EventEmitter;
 
+// uuids are easier to read with dashes
+// this helper removes dashes so comparisons work
+var uuid = function(uuid_with_dashes) {
+  return uuid_with_dashes.replace(/-/g, '');
+}
+
 // constructor function, so you can call new BleUart():
-var BleUart = function (uuid) {
-  var service = '6e400001b5a3f393e0a9e50e24dcca9e';     // the service you want
+var BleUart = function (optional_service_uuid) {
+  // UUIDs for Nordic UART service
+  var serviceUUID = uuid('6e400001-b5a3-f393-e0a9-e50e24dcca9e'); // the service you want
+  var transmitUUID = uuid('6e400002-b5a3-f393-e0a9-e50e24dcca9e'); // TX from noble's perspective
+  var receiveUUID = uuid('6e400003-b5a3-f393-e0a9-e50e24dcca9e');  // RX from noble's perspective
   var receive, transmit;        // transmit and receive BLE characteristics
+  var writeWithoutResponse;     // flag for write characteristic (based on Bluefruit version)
   var self = this;              // reference to the instance of BleUart
   self.connected = false;       // whether the remote peripheral's connected
-  self.peripheral;              // the remote peripheral as an object
+  self.peripheral = null;       // the remote peripheral as an object
   EventEmitter.call(self);      // make a copy of EventEmitter so you can emit events
 
-  if (uuid) {                   // if the constructor was called with a different UUID,
-    service = uuid;             // then set that as the service to search for
+  if (optional_service_uuid) {  // if the constructor was called with a different UUID,
+    serviceUUID = uuid(optional_service_uuid);  // then set that as the service to search for
   }
 
   // The scanning function:
   function scan(state) {
     if (state === 'poweredOn') {    // if the radio's on, scan for this service
-      noble.startScanning([service], false);
+      noble.startScanning([serviceUUID], false);
     }
     // emit a 'scanning' event:
     self.emit('scanning', state);
@@ -51,7 +61,7 @@ var BleUart = function (uuid) {
       // service, you can stop scanning for others:
       noble.stopScanning();
       // get the service you want on this peripheral:
-      peripheral.discoverServices([service],explore);
+      peripheral.discoverServices([serviceUUID],explore);
     }
 
     // called only when the peripheral has the service you're looking for:
@@ -66,37 +76,44 @@ var BleUart = function (uuid) {
     // this gets run by the for-loop at the end of the
     // explore function, below:
     function getCharacteristics(error, characteristics) {
-      for (var c in characteristics) {        // loop over the characteristics
-        if (characteristics[c].notify) {      // if one has the notify property
-          receive = characteristics[c];       // then it's the receive characteristic
-          receive.notify(true);    // turn on notifications
 
-          // whenever a notify event happens, get the result.
-          // this handles repeated notifications:
-          receive.on('read', function(data, notification) {
-            if (notification) {   // if you got a notification
-              self.emit('data', String(data));  // emit a data event
+        characteristics.forEach(function(characteristic) {
+          console.log(characteristic.toString());
+          if (characteristic.uuid === receiveUUID) {
+            console.log("Discovered Receive Characteristic");
+            receive = characteristic;
+            receive.notify(true);    // turn on notifications
+
+            receive.on('read', function(data, notification) {
+              console.log(JSON.stringify(data));
+              if (notification) {   // if you got a notification
+                self.emit('data', String(data));  // emit a data event
+              }
+            });
+          } else if (characteristic.uuid === transmitUUID) {
+            console.log("Discovered Transmit Characteristic");
+            transmit = characteristic;
+            // Older Adafruit hardware is writeWithoutResponse
+            if (characteristic.properties.indexOf("writeWithoutResponse") > -1) {
+              writeWithoutResponse = true;
+            } else {
+              writeWithoutResponse = false;
             }
-          });
-        }
+          }
+        });
 
-        if (characteristics[c].write) {     // if a characteristic has a write property
-          transmit = characteristics[c];    // then it's the transmit characteristic
+        // if you've got a valid transmit and receive characteristic,
+        // then you're truly connected. Emit a connected event:
+        if (transmit && receive) {
+            self.connected = true;
+            self.emit('connected', self.connected);
         }
-      }   // end of getCharacteristics()
-
-    // if you've got a valid transmit and receive characteristic,
-    // then you're truly connected. Emit a connected event:
-    if (transmit && receive) {
-        self.connected = true;
-        self.emit('connected', self.connected);
-      }
-    }
+    } // end of getCharacteristics()
 
     // iterate over the services discovered. If one matches
     // the UART service, look for its characteristics:
     for (var s in services) {
-      if (services[s].uuid === service) {
+      if (services[s].uuid === serviceUUID) {
         services[s].discoverCharacteristics([], getCharacteristics);
         return;
       }
@@ -107,7 +124,8 @@ var BleUart = function (uuid) {
   /// then write data out to it as a Buffer:
   self.write = function(data) {
     if (transmit) {
-      transmit.write(new Buffer(data));
+      console.log("writeWithoutResponse =", writeWithoutResponse)
+      transmit.write(new Buffer(data), writeWithoutResponse);
     }
   }
 
@@ -121,7 +139,6 @@ var BleUart = function (uuid) {
   // if you discover a peripheral with the appropriate service, connect:
   noble.on('discover', self.connect);
 }
-
 
 util.inherits(BleUart, EventEmitter);   // BleUart inherits all the EventEmitter properties
 module.exports = BleUart;               // export BleUart

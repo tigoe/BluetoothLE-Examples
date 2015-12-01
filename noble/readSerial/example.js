@@ -1,5 +1,6 @@
 var BleUart = require('./ble-uart');
-var bleSerial = new BleUart('6e400001b5a3f393e0a9e50e24dcca9e');
+//var bleSerial = new BleUart('6e400001b5a3f393e0a9e50e24dcca9e');
+var bleSerial = new BleUart();
 
 // this function gets called when new data is received from
 // the Bluetooth LE serial service:
