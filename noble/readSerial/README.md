@@ -25,8 +25,11 @@ $ node example.js
 Then make your own example using the example.js file as a template.
 
 ## Properties
-self.connected
-self.peripheral
+## .connected
+  Returns whether you're connected to the remote peripheral or not.
+
+### .peripheral
+  Returns the peripheral to which you're connected. See the [noble library for node.js](https://github.com/sandeepmistry/noble) for the properties of the peripheral object. 
 
 ## Functions
 ### new BleUart(serviceUUID)
