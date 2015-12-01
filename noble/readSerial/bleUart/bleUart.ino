@@ -1,25 +1,28 @@
 /*
-  A simplified example of the Adaffuit Bluetooth LE UART library
-  for the Feather Bluetooth LE module.
+  A simplified example of the Adaffuit Bluetooth LE SPI library
+  for the Feather Bluetooth LE module. Can also work with the 
+  Bluefruit SPI board.
 
   based on Kevin Townsend's blueuart_datamode example
   modified by Tom Igoe
-  30 Nov 2015
+  1 Dec 2015
  */
 
 #include <SPI.h>
-#include <SoftwareSerial.h>
 
 #include <Adafruit_BLE.h>
 #include <Adafruit_BluefruitLE_SPI.h>
-#include <Adafruit_BluefruitLE_UART.h>
-#define BLUEFRUIT_SPI_CS  8
-#define BLUEFRUIT_SPI_IRQ 7
-#define BLUEFRUIT_SPI_RST 4    // Optional but recommended, set to -1 if unused
+const int csPin = 8;     // Bluefruit SPI chip select pin
+const int irqPin = 7;    // Bluefruit SPI Interrupt Request pin
+const int rstPin = 4;    // Bluefruit SPI Reset pin. Optional
 
-/* hardware SPI, using SCK/MOSI/MISO hardware SPI pins 
-and then user selected CS/IRQ/RST */
-Adafruit_BluefruitLE_SPI ble(BLUEFRUIT_SPI_CS, BLUEFRUIT_SPI_IRQ, BLUEFRUIT_SPI_RST);
+// This initializes communication with the Bluefruit radio over SPI
+// The Feather Bluefruit works this way.
+Adafruit_BluefruitLE_SPI ble(csPin, irqPin, rstPin);
+
+// You can also use software serial or hardware serial for this sketch.
+// See the BleUart2 sketch for details.
+
 
 void setup() {
   while (!Serial);      // wait for serial monitor to open
