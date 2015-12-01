@@ -9,11 +9,7 @@ var app = express();							// initalize express
 // serve static pages from public/ directory:
 app.use('/',express.static('public'));
 
-
-app.get('/', function(request, response){
-  response.end("Hello, client");
-});
-
+// if a client requests /data, return the data:
 app.get('/data', function(request, response){
   console.log("Someone asked for the data");
   response.end(bleData);
