@@ -30,9 +30,6 @@ Adafruit_BluefruitLE_UART ble(bluefruitSS, uartModePin, ctsPin, rtsPin);
 // comment out the last two lines and uncomment this line:
 // Adafruit_BluefruitLE_UART ble(Serial1, uartModePin);
 
-// You can also use SPI for this sketch, for example, for the Feather or Flora
-// See the BleUart sketch for details.
-
 
 void setup() {
   while (!Serial);      // wait for serial monitor to open
