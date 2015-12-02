@@ -21,7 +21,7 @@ var EventEmitter = require('events').EventEmitter;
 // this helper removes dashes so comparisons work
 var uuid = function(uuid_with_dashes) {
   return uuid_with_dashes.replace(/-/g, '');
-}
+};
 
 // TX and RX are from Noble's perspective
 var knownUartServices = {
@@ -45,13 +45,13 @@ var knownUartServices = {
     txUUID: 'af20fbac-2518-4998-9af7-af42540731b3',
     rxUUID: 'af20fbac-2518-4998-9af7-af42540731b3'
   }
-}
+};
 
 var checkService = function(name, uart) {
   var error = false;
 
   if (!name) {
-    name == "UART Service";
+    name = "UART Service";
   }
 
   if (Object.keys(uart).length === 0) {
@@ -79,7 +79,7 @@ var checkService = function(name, uart) {
     console.log(name + " " + JSON.stringify(uart));
     process.exit(-1);
   }
-}
+};
 
 // constructor function, so you can call new BleUart():
 var BleUart = function (name, options) {
@@ -129,7 +129,7 @@ var BleUart = function (name, options) {
     peripheral.on('connect', discover);
     // when a peripheral disconnects, run disconnect:
     peripheral.on('disconnect', self.disconnect);
-  }
+  };
 
   // the services and characteristics exploration function:
   // once you're connected, this gets run:
@@ -192,18 +192,18 @@ var BleUart = function (name, options) {
       //console.log("writeWithoutResponse =", writeWithoutResponse)
       transmit.write(new Buffer(data), writeWithoutResponse);
     }
-  }
+  };
 
   // the BLE disconnect function:
   self.disconnect = function() {
     self.connected = false;
-  }
+  };
 
   // when the radio turns on, start scanning:
   noble.on('stateChange', scan);
   // if you discover a peripheral with the appropriate service, connect:
   noble.on('discover', self.connect);
-}
+};
 
 util.inherits(BleUart, EventEmitter);   // BleUart inherits all the EventEmitter properties
 module.exports = BleUart;               // export BleUart
