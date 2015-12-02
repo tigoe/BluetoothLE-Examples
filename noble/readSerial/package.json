@@ -4,7 +4,8 @@
   "description": "a BLE UART module",
   "main": "example.js",
   "dependencies": {
-    "noble": "^1.2.1"
+    "noble": "^1.2.1",
+    "express": "^4.0.0"
   },
   "devDependencies": {},
   "scripts": {
