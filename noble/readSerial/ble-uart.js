@@ -1,6 +1,6 @@
 
 /*
-Noble cread UART service  example
+Noble UART service example
 
 This example uses Sandeep Mistry's noble library for node.js to
 read and write from Bluetooth LE characteristics. It looks for a UART
@@ -23,22 +23,83 @@ var uuid = function(uuid_with_dashes) {
   return uuid_with_dashes.replace(/-/g, '');
 }
 
+// TX and RX are from Noble's perspective
+var knownUartServices = {
+  nordic: {
+    serviceUUID: '6e400001-b5a3-f393-e0a9-e50e24dcca9e',
+    txUUID: '6e400002-b5a3-f393-e0a9-e50e24dcca9e',
+    rxUUID: '6e400003-b5a3-f393-e0a9-e50e24dcca9e'
+  },
+  redbear: {
+    serviceUUID: '713d0000-503e-4c75-ba94-3148f18d941e',
+    txUUID: '713d0003-503e-4c75-ba94-3148f18d941e',
+    rxUUID: '713d0002-503e-4c75-ba94-3148f18d941e'
+  },
+  laird: {
+    serviceUUID: '569a1101-b87f-490c-92cb-11ba5ea5167c',
+    txUUID: '569a2001-b87f-490c-92cb-11ba5ea5167c',
+    rxUUID: '569a2000-b87f-490c-92cb-11ba5ea5167c'
+  },
+  bluegiga: {
+    serviceUUID: '1d5688de-866d-3aa4-ec46-a1bddb37ecf6',
+    txUUID: 'af20fbac-2518-4998-9af7-af42540731b3',
+    rxUUID: 'af20fbac-2518-4998-9af7-af42540731b3'
+  }
+}
+
+var checkService = function(name, uart) {
+  var error = false;
+
+  if (!name) {
+    name == "UART Service";
+  }
+
+  if (Object.keys(uart).length === 0) {
+    // Maybe the user typo'd the service name?
+    console.log("Expecting service name to be one of: " + Object.keys(knownUartServices).join(", ") + ".");
+    console.log("Or pass serviceUUID, txUUID, & rxUUID in object literal as second argument.");
+    error = true;
+  } else {
+    if (!uart.serviceUUID) {
+      console.log("ERROR: Expecting serviceUUID for " + name);
+      error = true;
+    }
+    if (!uart.txUUID) {
+      console.log("ERROR: Expecting txUUID for " + name);
+      error = true;
+    }
+    if (!uart.rxUUID) {
+      console.log("ERROR: Expecting rxUUID for " + name);
+      error = true;
+    }
+  }
+
+  // TODO handle this better...
+  if (error) {
+    console.log(name + " " + JSON.stringify(uart));
+    process.exit(-1);
+  }
+}
+
 // constructor function, so you can call new BleUart():
-var BleUart = function (optional_service_uuid) {
-  // UUIDs for Nordic UART service
-  var serviceUUID = uuid('6e400001-b5a3-f393-e0a9-e50e24dcca9e'); // the service you want
-  var transmitUUID = uuid('6e400002-b5a3-f393-e0a9-e50e24dcca9e'); // TX from noble's perspective
-  var receiveUUID = uuid('6e400003-b5a3-f393-e0a9-e50e24dcca9e');  // RX from noble's perspective
+var BleUart = function (name, options) {
+
+  // get known service or empty object
+  var uart = knownUartServices[name] || {};
+  // apply user over rides
+  Object.assign(uart, options);
+
+  checkService(name, uart);
+
+  var serviceUUID = uuid(uart.serviceUUID); // the service you want
+  var transmitUUID = uuid(uart.txUUID); // TX from noble's perspective
+  var receiveUUID = uuid(uart.rxUUID);  // RX from noble's perspective
   var receive, transmit;        // transmit and receive BLE characteristics
   var writeWithoutResponse;     // flag for write characteristic (based on Bluefruit version)
   var self = this;              // reference to the instance of BleUart
   self.connected = false;       // whether the remote peripheral's connected
   self.peripheral = null;       // the remote peripheral as an object
   EventEmitter.call(self);      // make a copy of EventEmitter so you can emit events
-
-  if (optional_service_uuid) {  // if the constructor was called with a different UUID,
-    serviceUUID = uuid(optional_service_uuid);  // then set that as the service to search for
-  }
 
   // The scanning function:
   function scan(state) {
@@ -78,20 +139,24 @@ var BleUart = function (optional_service_uuid) {
     function getCharacteristics(error, characteristics) {
 
         characteristics.forEach(function(characteristic) {
-          console.log(characteristic.toString());
+          //DEBUG console.log(characteristic.toString());
           if (characteristic.uuid === receiveUUID) {
-            console.log("Discovered Receive Characteristic");
             receive = characteristic;
-            receive.notify(true);    // turn on notifications
+
+            if (characteristic.properties.indexOf("notify") < 0) {
+              console.log("ERROR: expecting " + characteristic.uuid + " to have 'notify' property.");
+            }
+            receive.notify(true);  // turn on notifications
 
             receive.on('read', function(data, notification) {
-              console.log(JSON.stringify(data));
               if (notification) {   // if you got a notification
-                self.emit('data', String(data));  // emit a data event
+                self.emit('data', data);  // emit a data event
               }
             });
-          } else if (characteristic.uuid === transmitUUID) {
-            console.log("Discovered Transmit Characteristic");
+          }
+
+          // separate *if* since some hardware uses the same characteristic for tx and rx
+          if (characteristic.uuid === transmitUUID) {
             transmit = characteristic;
             // Older Adafruit hardware is writeWithoutResponse
             if (characteristic.properties.indexOf("writeWithoutResponse") > -1) {
@@ -124,7 +189,7 @@ var BleUart = function (optional_service_uuid) {
   /// then write data out to it as a Buffer:
   self.write = function(data) {
     if (transmit) {
-      console.log("writeWithoutResponse =", writeWithoutResponse)
+      //console.log("writeWithoutResponse =", writeWithoutResponse)
       transmit.write(new Buffer(data), writeWithoutResponse);
     }
   }
