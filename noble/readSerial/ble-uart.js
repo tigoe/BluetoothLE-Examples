@@ -9,6 +9,8 @@ You can see this service implemented in Adafruit's BLEFriend library.
 
 created 30 Nov 2015
 by Tom Igoe
+modified 1 Dec 2015
+by Don Coleman
 */
 
 var noble = require('noble');   //noble library
@@ -189,7 +191,14 @@ var BleUart = function (name, options) {
   /// then write data out to it as a Buffer:
   self.write = function(data) {
     if (transmit) {
-      //console.log("writeWithoutResponse =", writeWithoutResponse)
+      // you can only send at most 20 bytes in a Bluetooth LE pacet.
+      // so slice the data into 20-byte chunks:
+      while (data.length > 20) {
+        var output = data.slice(0, 19);
+        transmit.write(new Buffer(output), writeWithoutResponse);
+        data = data.slice(20);
+      }
+      // send any remainder bytes less than the last 20:
       transmit.write(new Buffer(data), writeWithoutResponse);
     }
   };
