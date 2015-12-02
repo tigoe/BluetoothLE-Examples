@@ -17,15 +17,30 @@ created 30 Nov 2015
 by Tom Igoe
 
 
-To install:
-* download this file, example.js, and the packge.json
+### Installing
+
+Clone this git repository and change to the `readSerial` directory.
+
+```
+git clone https://github.com/tigoe/BluetoothLE-Examples.git
+cd BluetoothLE-Examples/noble/readSerial
+```
+
+### Run the command line example
 
 ```
 $ npm install
 $ node example.js
 ```
-
 Then make your own example using the example.js file as a template.
+
+### Run the web example
+
+```
+$ npm install
+$ node exampleServer.js
+```
+Open your web browser to port http://localhost:8080. Customize exampleServer.js for your project.
 
 ## Properties
 ### .connected
