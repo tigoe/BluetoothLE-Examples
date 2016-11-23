@@ -7,9 +7,7 @@ context: node.js
 // include libraries:
 var noble = require('noble');
 var device;                   // the peripheral to which you're connecting
-var timeCharacteristic = {    // the characteristic that you care about
-  uuid: '1cbffaa8b17e11e680f576304dec7eb7'
-};
+var timeCharacteristic = '1cbffaa8b17e11e680f576304dec7eb7';   // uuid for the characteristic
 
 //  callback function for noble stateChange event:
 function scanForPeripherals(state){
@@ -52,22 +50,17 @@ function explore(error, services, characteristics) {
   // check if each characteristic's UUID matches the shutter UUID:
   for (c in characteristics) {
     // if the uuid matches, copy the whole characteristic into timeCharacteristic:
-    if (characteristics[c].uuid === timeCharacteristic.uuid){
-      timeCharacteristic = characteristics[c];
-      timeCharacteristic.subscribe(listen);
+    if (characteristics[c].uuid === timeCharacteristic){
+      characteristics[c].subscribe();           // subscribe to the characteristic
+      characteristics[c].on('data', readData);  // set a listener for it
     }
   }
 }
 
-// listen to the characteristic
-// TODO: can we inherit the characteristic from the subscription call?
-function listen() {
-  // set a listener for the characteristic:
-  timeCharacteristic.on('data', readData);
-
-  function readData(data) {
-    console.log(data.readIntLE());  // read buffer as an int
-  }
+function readData(data) {
+  console.log(data.readIntLE());  // read buffer as an int
+  // once you've got the data, you probably want to put it in a global
+  // to use elsewhere
 }
 
 // Scan for peripherals with the camera service UUID:
