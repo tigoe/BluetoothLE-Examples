@@ -14,10 +14,9 @@ var timeCharacteristic = {    // the characteristic that you care about
 //  callback function for noble stateChange event:
 function scanForPeripherals(state){
   if (state === 'poweredOn') {                // if the Bluetooth radio's on,
-  noble.startScanning(['1cbffaa8b17d11e680f576304dec7eb7'], false); // scan for service
-  console.log("Started scanning");
+    noble.startScanning(['1cbffaa8b17d11e680f576304dec7eb7'], false); // scan for service
+    console.log("Started scanning");
   } else {                                    // if the radio's off,
-    noble.stopScanning();                     // stop scanning
     console.log("Bluetooth radio not responding. Ending program.");
     process.exit(0);                          // end the program
   }
@@ -25,27 +24,27 @@ function scanForPeripherals(state){
 
 // callback function for noble discover event:
 function readPeripheral (peripheral) {
-  console.log('discovered ' + peripheral.advertisement.localName);
-  console.log('signal strength: ' + peripheral.rssi);
   device = peripheral;    // save the peripheral to a global variable
 
-  noble.stopScanning();                 // stop scanning
-  peripheral.connect();                 // attempt to connect to peripheral
-  peripheral.on('connect', readServices);  // read services when you connect
+  console.log('discovered ' + device.advertisement.localName);
+  console.log('signal strength: ' + device.rssi);
+  console.log('device address: ' + device.address);
+
+  noble.stopScanning();                // stop scanning
+  device.connect();                    // attempt to connect to peripheral
+  device.on('connect', readServices);  // read services when you connect
 }
 
 // the readServices function:
 function readServices() {
-  console.log('Checking services: ' + device.advertisement.localName);
   // Look for services and characteristics.
   // Call the explore function when you find them:
   device.discoverAllServicesAndCharacteristics(explore);
 }
 
-// the service/characteristic explore function.
-// depends on the of services & characteristics, not the peripheral,
-// so it doesn't have to be local to readPeripheral():
+// the service/characteristic explore function:
 function explore(error, services, characteristics) {
+  console.log("explore");
   // list the services and characteristics found:
   console.log('services: ' + services);
   console.log('characteristics: ' + characteristics);
@@ -61,11 +60,13 @@ function explore(error, services, characteristics) {
 }
 
 // listen to the characteristic
+// TODO: can we inherit the characteristic from the subscription call?
 function listen() {
+  // set a listener for the characteristic:
   timeCharacteristic.on('data', readData);
+
   function readData(data) {
-    console.log(data[0]);
-    device.disconnect();
+    console.log(data.readIntLE());  // read buffer as an int
   }
 }
 
