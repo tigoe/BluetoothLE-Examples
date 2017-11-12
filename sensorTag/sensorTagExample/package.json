@@ -1,6 +1,6 @@
 {
   "name": "sensorTagExample",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "TI Sensor Tag Example",
   "main": "sensortagAccelerometer.js",
   "scripts": {
@@ -9,6 +9,6 @@
   "author": "Tom Igoe",
   "license": "ISC",
   "dependencies": {
-    "sensortag": "^1.0.0"
+    "sensortag": "*"
   }
 }

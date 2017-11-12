@@ -56,6 +56,7 @@ SensorTag.discover(function(tag) {
 	     console.log('\tx = %d G', x.toFixed(1));
 	     console.log('\ty = %d G', y.toFixed(1));
 	     console.log('\tz = %d G', z.toFixed(1));
+			 console.log();
 	   });
 	}
 
