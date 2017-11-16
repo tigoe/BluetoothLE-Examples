@@ -40,6 +40,8 @@ function handleTag(tag) {
 	*/
 	function enableSensors() {		// attempt to enable the sensors
 		console.log('enabling sensors');
+		// read the unique ID of this tag:
+		tag.readSystemId(readID);
 		// enable sensor:
 		tag.enableAccelerometer();
 		// make an object to hold this sensor's values:
@@ -58,6 +60,15 @@ function handleTag(tag) {
 		tagRecord.accel.z = z;
 		// broadcast the latest values to any webSocket clients:
 		broadcast(tagRecord);
+	}
+
+	// add the tag ID to the tagRecord, so webSocket clients can get it
+	function readID(error, systemID) {
+		if (!error) {
+			tagRecord.serialNumber = systemID;
+		} else {
+			console.log(error);
+		}
 	}
 
 	// Now that you've defined all the functions, start the process.
