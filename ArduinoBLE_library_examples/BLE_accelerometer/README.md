@@ -7,7 +7,7 @@ You will need to upgrade your MKR 1010 to firmware version 1.2.0, using the Firm
 Accelerometer connected to MKR board, Schematic view
 <img src="MKR1010_accelerometer_schem.svg" alt="Accelerometer connected to MKR board, schematic view" width="300">
 
-<img src="MKR1010_accelerometer_bb.svg" width="300" alt="Accelerometer connected to MKR board, breadboard view")
+<img src="MKR1010_accelerometer_bb.svg" width="300" alt="Accelerometer connected to MKR board, breadboard view">
 
 You can use this with this [p5.js Web Bluetooth example](https://github.com/tigoe/BluetoothLE-Examples/tree/master/p5-web-bluetooth).
 
