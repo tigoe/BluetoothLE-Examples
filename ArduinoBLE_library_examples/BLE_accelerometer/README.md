@@ -5,10 +5,10 @@ This example shows how use an [Arduino MKR WiFi 1010](https://store.arduino.cc/u
 You will need to upgrade your MKR 1010 to firmware version 1.2.0, using the Firmware updater tool in the Arduino IDE.  Here are [instructions to upgrade the firmware of the MKR 1010](http://forum.arduino.cc/index.php?topic=579306.0).  This was built using an [ADXL337 accelerometer](https://www.sparkfun.com/products/12786) was used for this example because it is simple; Any of the ADXL accelerometers can be substituted (the drawing shows an ADXL335). This family of accelerometers has three analog voltage outputs for the three axes. 
 
 Accelerometer connected to MKR board, Schematic view
-![Accelerometer connected to MKR board, schematic view](MKR1010_accelerometer_schem.svg "Accelerometer connected to MKR board, schematic view" | width=300)
+![Accelerometer connected to MKR board, schematic view](MKR1010_accelerometer_schem.svg "Accelerometer connected to MKR board, schematic view")
 
 Accelerometer connected to MKR board, Breadboard view
-![Accelerometer connected to MKR board, Breadboard view](MKR1010_accelerometer_bb.svg "Accelerometer connected to MKR board, Breadboard view" | width=300)
+![Accelerometer connected to MKR board, Breadboard view](MKR1010_accelerometer_bb.svg | width="300")
 
 You can use this with this [p5.js Web Bluetooth example](https://github.com/tigoe/BluetoothLE-Examples/tree/master/p5-web-bluetooth).
 
