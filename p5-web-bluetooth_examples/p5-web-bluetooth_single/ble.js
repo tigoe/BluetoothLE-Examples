@@ -21,6 +21,11 @@ var accelerometer = {
   z: 0
 }
 
+var left = {
+  x: 0,
+  y: 0,
+  z: 0
+}
 // connect to the peripheral:
 function connect() {
   navigator.bluetooth.requestDevice({
@@ -57,6 +62,12 @@ function connect() {
 function handleData(event) {
   // get the data  from the peripheral:
   var sensorVal = event.target.value.getInt32(0, true);
+  if (event.target.service.device.name == 'rightGlove') {
+    console.log ('right');
+  }
+  if (event.target.service.device.name == 'leftGlove') {
+    console.log ('left');
+  }
   switch (event.target.uuid) {
     case accelX:
       accelerometer.x = sensorVal;

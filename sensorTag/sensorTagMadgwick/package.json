@@ -1,0 +1,22 @@
+{
+  "name": "sensortag-madgwick",
+  "version": "0.0.1",
+  "description": "sensortag example using AHRS algorithm to get heading, pitch and roll",
+  "main": "sensortagMadgwick.js",
+  "dependencies": {
+    "ahrs": "^1.1.6",
+    "sensortag": "^1.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sensortag",
+    "AHRS",
+    "madgwick",
+    "attitude"
+  ],
+  "author": "Tom Igoe",
+  "license": "ISC"
+}
