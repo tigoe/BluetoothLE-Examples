@@ -4,8 +4,6 @@ These examples use [Sandeep Mistry's Arduino BLE Peripheral library](https://git
 
 These examples can be used with nRF8001 and nRF51822 chips - see Sandeep’s repo for list of compatible hardware.
 
-
-
 ## Getting started with nRF51822 boards
 
 ### [BLE Nano](http://redbearlab.com/blenano/) and [RedBearLab nRF51822](http://redbearlab.com/redbearlab-nrf51822)
@@ -29,9 +27,6 @@ Follow instructions in [this link](https://github.com/RFduino/RFduino/blob/maste
 - Your new board will now show up in the Tools->Board menu. 
 
 Attention! These instructions are for Arduino 1.6.3 or newer.
-
-
-
 
 ## Examples
 
