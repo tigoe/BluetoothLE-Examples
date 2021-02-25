@@ -29,7 +29,7 @@ Written for [node.js](http://www.nodejs.org), using [Sandeep Mistry](https://git
 ## Cordova
 [Cordova 4.0](https://cordova.apache.org/) or later. These were written using [Don Coleman](https://github.com/don)'s [BLE Central plugin for Cordova](https://github.com/don/cordova-plugin-ble-central). We've tested the Cordova examples on iOS and Android, though they may be out of date since Cordova.
 
-* [Cordova Examples](https://www.arduino.cc/en/Reference/cordova)
+* [Cordova Examples](cordova)
 
 
 ## Bluetooth References 
