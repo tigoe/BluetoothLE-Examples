@@ -4,8 +4,8 @@ This repository contains examples for Bluetooth LE in a variety of platforms. Th
 
 The examples are divided into the following categories:
 
-## ArduinoBLE
-[ArduinoBLE Library](https://www.arduino.cc/en/Reference/ArduinoBLE) These examples work with the Arduino MKR1010, Nano 33 IoT and Nano 33 BLE boards, and presumably other boards using the same radios as those boards. You'll need [Arduino 1.8.13](http://arduino.cc/en/Main/Software) or later. These all should pair well with Yining Shi and Jingwen Zhu's [p5ble library for Web Bluetooth](https://itpnyu.github.io/p5ble-website/).
+## ArduinoBLE Library
+ These examples work with the Arduino MKR1010, Nano 33 IoT and Nano 33 BLE boards, and presumably other boards using the same radios as those boards, using the [ArduinoBLE Library](https://www.arduino.cc/en/Reference/ArduinoBLE). You'll need [Arduino 1.8.13](http://arduino.cc/en/Main/Software) or later. These all should pair well with Yining Shi and Jingwen Zhu's [p5ble library for Web Bluetooth](https://itpnyu.github.io/p5ble-website/).
 
 * [ArduinoBLE Library Examples](https://github.com/tigoe/BluetoothLE-Examples/tree/master/ArduinoBLE_library_examples)
 
