@@ -17,7 +17,8 @@ These examples work with the Nordic NRF8001 and NRF51822 radios, using Sandeep's
 ## Web Bluetooth Examples
 These examples were written the Web Bluetooth framework and p5.js. They're useful for seeing the core Web Bluetooth API, but the [p5ble library](https://itpnyu.github.io/p5ble-website/) makes it simpler to do. It can be used without the p5.js framework as well.
 
-* [p5.js Web Bluetooth Examples](https://github.com/tigoe/BluetoothLE-Examples/tree/master/p5-web-bluetooth_examples)
+* [p5.ble Examples](https://github.com/tigoe/BluetoothLE-Examples/tree/master/p5-web-bluetooth_examples)
+* [Web Bluetooth Examples](https://github.com/tigoe/BluetoothLE-Examples/tree/master/web-bluetooth)
 
 ## Node.js, Noble, Bleno
 Written for [node.js](http://www.nodejs.org), using [Sandeep Mistry](https://github.com/sandeepmistry)'s Bluetooth LE libraries for node.js, specifically [noble](https://github.com/sandeepmistry/noble), [bleno](https://github.com/sandeepmistry/bleno), and various libraries he's made deriving from those. For Windows users, Don Coleman's done a nice [video explaining how to set up Windows for Bluetooth LE and Node Development](https://www.youtube.com/watch?v=mL9B8wuEdms) using noble.
