@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="script.js"></script>
+   <title>Document</title>
+</head>
+<body>
+  <h1>Web Bluetooth connection and write example</h1>
+
+  <p>Uses the Web Bluetooth API to make Bluetooth connections 
+    to a plain JavaScript page. 
+
+    This script works with the ArduinoBLE library example called <a href="https://github.com/arduino-libraries/ArduinoBLE/tree/master/examples/Peripheral/LED">LED</a>. 
+    Here is the <a href="https://www.arduino.cc/en/Reference/ArduinoBLE">library documentation</a>.
+    </p>
+
+  <input type="button" id="connect" value="connect"><br>
+  <div id="device">no device yet</div>
+  LED On:<input type="checkbox" id="writeButton" value="Change LED">
+</body>
+</html>

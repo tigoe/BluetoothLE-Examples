@@ -37,6 +37,3 @@ Written for [node.js](http://www.nodejs.org), using [Sandeep Mistry](https://git
 * [Make: Bluetooth](https://www.makershed.com/products/make-bluetooth) (book) by Alasdair Allan, Don Coleman, and Sandeep Mistry
 * [BLEDocs](https://github.com/tigoe/BLEDocs/wiki), a repository introducing Bluetooth LE
 * [LightBlue](https://itunes.apple.com/us/app/lightblue/id639944780?mt=12), a Bluetooth LE diagnostic app for MacOS by Punchthrough Design
-* The [Web Bluetooth API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API) for JavaScript
-* Yining Shi's [example](https://github.com/yining1023/arduino101CuriePME/tree/master/example1) for Web Bluetooth and p5.js
-* Uri Shaked's [introduction to Web Bluetooth](https://medium.com/@urish/start-building-with-web-bluetooth-and-progressive-web-apps-6534835959a6)
