@@ -7,7 +7,7 @@ The examples are divided into the following categories:
 ## ArduinoBLE Library
  These examples work with the Arduino MKR1010, Nano 33 IoT and Nano 33 BLE boards, and presumably other boards using the same radios as those boards, using the [ArduinoBLE Library](https://www.arduino.cc/en/Reference/ArduinoBLE). You'll need [Arduino 1.8.13](http://arduino.cc/en/Main/Software) or later. These all should pair well with Yining Shi and Jingwen Zhu's [p5ble library for Web Bluetooth](https://itpnyu.github.io/p5ble-website/).
 
-* [ArduinoBLE Library Examples](https://github.com/tigoe/BluetoothLE-Examples/tree/master/ArduinoBLE_library_examples)
+* [ArduinoBLE Library Examples](ArduinoBLE_library_examples)
 
 ## ArduinoBLEPeripheral Library
 These examples work with the Nordic NRF8001 and NRF51822 radios, using Sandeep's [Arduino BLE Peripheral library](https://github.com/sandeepmistry/arduino-BLEPeripheral). These examples were written using RedBear Labs' [BLE Nano](http://redbearlab.com/blenano/) boards and [RFDuino](http://www.rfduino.com/)'s boards. There are also some examples for Punchthrough's [LightBlue Bean](https://punchthrough.com/bean/) modules. These may be deprecated, as they have not tested in a few years.
