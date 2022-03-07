@@ -5,13 +5,13 @@ These examples were written using the [ArduinoBLE library](https://www.arduino.c
 [BLE_accelerometer](BLE_accelerometer) - This example creates a BLE peripheral with service that contains three
   characteristics, each an analog input value to the microcontroller. It was designed with the ADXL337 accelerometer in mind, but any three analog inputs will work as well.
 
-[BLE_LIS3DH_accelerometer](BLE_LIS3DH_accelerometer) - This example creates a BLE peripheral with service that contains three characteristics, each an analog input value to the microcontroller. It works with the LIS3DH accelerometer
+[BLE_LIS3DH_accelerometer](https://github.com/tigoe/BluetoothLE-Examples/tree/main/ArduinoBLE_library_examples/BLE_LIS3DH_accelerometer) - This example creates a BLE peripheral with service that contains three characteristics, each an analog input value to the microcontroller. It works with the LIS3DH accelerometer
 
-[BLE_RTC](BLE_RTC) - shows how to use the ArduinoBLE library in conjunction with the RTCZero library to make a clock. Works on any of the SAMD M0+ boards, which have a built-in real-time clock. 
+[BLE_RTC](https://github.com/tigoe/BluetoothLE-Examples/tree/main/ArduinoBLE_library_examples/BLE_RTC) - shows how to use the ArduinoBLE library in conjunction with the RTCZero library to make a clock. Works on any of the SAMD M0+ boards, which have a built-in real-time clock. 
 
-[BLE_String](BLE_String) - This example creates two String characteristics to act as a transmit buffer and a receive buffer. It sort of duplicates serial communication over Bluetooth, using a 128-byte transmit buffer and 128-byte receive buffer. 
+[BLE_String](https://github.com/tigoe/BluetoothLE-Examples/tree/main/ArduinoBLE_library_examples/BLE_String) - This example creates two String characteristics to act as a transmit buffer and a receive buffer. It sort of duplicates serial communication over Bluetooth, using a 128-byte transmit buffer and 128-byte receive buffer. 
 
-[BLEDuplex](BLEDuplex) - a pair of examples, one central and one peripheral, for connecting two Arduinos directly. 
+[BLEDuplex](https://github.com/tigoe/BluetoothLE-Examples/tree/main/ArduinoBLE_library_examples/BLEDuplex) - a pair of examples, one central and one peripheral, for connecting two Arduinos directly. 
 
 ## Handling the BLE Connection on a Peripheral
 
