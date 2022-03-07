@@ -49,7 +49,7 @@ void setup() {
   BLE.setEventHandler(BLEConnected, connectHandler);
   BLE.setEventHandler(BLEDisconnected, disconnectHandler);
 
-  // assign event handlers for characteristic
+  // assign event handler for rx characteristic:
   rxCharacteristic.setEventHandler(BLEWritten, incomingDataHandler);
 
   // add the service and set a value for the characteristic:
