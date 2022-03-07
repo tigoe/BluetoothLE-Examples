@@ -13,6 +13,8 @@ These examples were written using the [ArduinoBLE library](https://www.arduino.c
 
 [BLEDuplex](https://github.com/tigoe/BluetoothLE-Examples/tree/main/ArduinoBLE_library_examples/BLEDuplex) - a pair of examples, one central and one peripheral, for connecting two Arduinos directly. 
 
+[BLECallbackTest](https://github.com/tigoe/BluetoothLE-Examples/tree/main/ArduinoBLE_library_examples/BLECallbackTest) - Demonstrates the events that the BLE library will generate, and the handlers for them.
+
 ## Handling the BLE Connection on a Peripheral
 
 The ArduinoBLE library examples show two methods for handling the connection to a Central device when you're making a peripheral device: using the main `loop()` function, and using event handler functions. 
@@ -73,7 +75,7 @@ You typically define BLE device event handlers and characteristic handlers in th
   myCharacteristic.setEventHandler(BLEUnsubscribed, myCharacteristicUnsubscribed);
 ````
 
-You can see an example of how to manage handler events in the [BLECallbackTest](BLECallbackTest) example. 
+You can see an example of how to manage handler events in the [BLECallbackTest](https://github.com/tigoe/BluetoothLE-Examples/tree/main/ArduinoBLE_library_examples/BLECallbackTest) example. 
 
 ### Timing
 
