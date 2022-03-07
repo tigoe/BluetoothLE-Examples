@@ -7,9 +7,8 @@
   inputs will work as well.
 
   The circuit:
-  - Arduino MKR WiFi 1010 (firmware version 1.2.0 or later)
-     or Arduino Uno WiFi Rev2 board
-  - ADXL337 accelerometer attached to A0, A1, and A2
+  - Nano 33 IoT, Nano 33 BLE and BLE Sense, Arduino Uno WiFi Rev2, and MKR 1010 boards
+  - ADXL337 accelerometer or any analog in attached to A0, A1, and A2
 
   Based on Sandeep Mistry's ArduinoBLE examples
   
@@ -36,7 +35,7 @@ void setup() {
   }
 
   // set the local name that the peripheral advertises:
-  BLE.setLocalName("MKR1010Accelerometer");
+  BLE.setLocalName("BLE_Accelerometer");
   // set the UUID for the service:
   BLE.setAdvertisedService(accelService);
 

@@ -6,8 +6,7 @@
   was designed with the LIS3DH accelerometer in mind.
 
   The circuit:
-  - Arduino MKR WiFi 1010 (firmware version 1.2.0 or later)
-     or Arduino Uno WiFi Rev2 board
+  - Nano 33 IoT, Nano 33 BLE and BLE Sense, Arduino Uno WiFi Rev2, and MKR 1010 boards
   - LIS3DH accelerometer attached to SDA and SCL
 
   Based on Sandeep Mistry's ArduinoBLE examples
@@ -41,7 +40,7 @@ void setup() {
   }
 
   // set the local name that the peripheral advertises:
-  BLE.setLocalName("MKR1010Accelerometer");
+  BLE.setLocalName("BLEAccelerometer");
   // set the UUID for the service:
   BLE.setAdvertisedService(accelService);
 
