@@ -5,7 +5,7 @@
   "main": "example.js",
   "dependencies": {
     "noble": "^1.2.1",
-    "express": "^4.0.0"
+    "express": "^4.17.3"
   },
   "devDependencies": {},
   "scripts": {
