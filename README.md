@@ -17,7 +17,7 @@ These examples work with the Nordic NRF8001 and NRF51822 radios, using Sandeep's
 ## Web Bluetooth Examples
 These examples were written the Web Bluetooth framework and p5.js. They're useful for seeing the core Web Bluetooth API, but the [p5ble library](https://itpnyu.github.io/p5ble-website/) makes it simpler to do. It can be used without the p5.js framework as well.
 
-* [p5.ble Examples](p5-web-bluetooth_examples)
+* [p5.ble Examples](https://itpnyu.github.io/p5ble-website/) The best examples of these are on the p5ble.js site.
 * [Web Bluetooth Examples](web-bluetooth)
 
 ## Node.js, Noble, Bleno
